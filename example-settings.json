@@ -1,0 +1,13 @@
+{
+  "autoMemoIndicator.autoOpen": true,
+  "autoMemoIndicator.preserveFocus": true,
+  "autoMemoIndicator.memoFileExtensions": [
+    ".md",
+    ".txt", 
+    ".note",
+    ".memo"
+  ],
+  "autoMemoIndicator.customExtensions": ".org,.rst,.adoc",
+  "autoMemoIndicator.autoClosePrevious": true,
+  "autoMemoIndicator.keepSideLayout": false
+}

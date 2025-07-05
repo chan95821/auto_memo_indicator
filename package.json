@@ -1,0 +1,149 @@
+{
+  "name": "auto-memo-indicator",
+  "displayName": "Auto Memo Indicator",
+  "description": "Shows markdown files with the same name as the current file in a sidebar",
+  "version": "0.2.0",
+  "publisher": "your-publisher-name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/auto-memo-indicator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/auto-memo-indicator/issues"
+  },
+  "homepage": "https://github.com/your-username/auto-memo-indicator#readme",
+  "license": "MIT",
+  "keywords": [
+    "memo",
+    "markdown",
+    "notes",
+    "documentation",
+    "sidebar"
+  ],
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Auto Memo Indicator",
+      "properties": {
+        "autoMemoIndicator.autoOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically open the first memo file in a side panel when switching files"
+        },
+        "autoMemoIndicator.preserveFocus": {
+          "type": "boolean", 
+          "default": true,
+          "description": "Keep focus on the current file when opening memo files"
+        },
+        "autoMemoIndicator.memoFileExtensions": {
+          "type": "array",
+          "default": [".md", ".txt", ".note", ".memo"],
+          "description": "List of file extensions to consider as memo files",
+          "items": {
+            "type": "string"
+          }
+        },
+        "autoMemoIndicator.customExtensions": {
+          "type": "string",
+          "default": "",
+          "description": "Additional file extensions separated by commas (e.g., '.org,.rst,.adoc')"
+        },
+        "autoMemoIndicator.autoClosePrevious": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically close previous memo files when switching to a different file"
+        },
+        "autoMemoIndicator.keepSideLayout": {
+          "type": "boolean",
+          "default": false,
+          "description": "Keep side panel layout when closing previous memo files (prevents layout shift)"
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "memoIndicator",
+          "name": "Memo Files"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "memoIndicator.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "memoIndicator.openFile",
+        "title": "Open Memo File"
+      },
+      {
+        "command": "memoIndicator.toggleAutoOpen",
+        "title": "Toggle Auto Open Memo Files"
+      },
+      {
+        "command": "memoIndicator.toggleAutoClose",
+        "title": "Toggle Auto Close Previous Memo Files"
+      },
+      {
+        "command": "memoIndicator.openInSide",
+        "title": "Open in Side Panel"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "memoIndicator.refresh",
+          "when": "view == memoIndicator",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "memoIndicator.openInSide",
+          "when": "view == memoIndicator",
+          "group": "inline"
+        }
+      ],
+      "command-palette": [
+        {
+          "command": "memoIndicator.toggleAutoOpen",
+          "when": "true"
+        },
+        {
+          "command": "memoIndicator.toggleAutoClose",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
