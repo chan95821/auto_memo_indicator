@@ -1,16 +1,17 @@
 {
   "name": "auto-memo-indicator",
   "displayName": "Auto Memo Indicator",
-  "description": "Shows markdown files with the same name as the current file in a sidebar",    "version": "0.2.1",
-  "publisher": "your-publisher-name",
+  "description": "Shows markdown files with the same name as the current file in a sidebar",
+  "version": "0.2.1",
+  "publisher": "kopooolso",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/auto-memo-indicator.git"
+    "url": "https://github.com/chan95821/auto_memo_indicator.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/auto-memo-indicator/issues"
+    "url": "https://github.com/chan95821/auto-memo-indicator/issues"
   },
-  "homepage": "https://github.com/your-username/auto-memo-indicator#readme",
+  "homepage": "https://github.com/chan95821/auto-memo-indicator#readme",
   "license": "MIT",
   "keywords": [
     "memo",
@@ -39,13 +40,18 @@
           "description": "Automatically open the first memo file in a side panel when switching files"
         },
         "autoMemoIndicator.preserveFocus": {
-          "type": "boolean", 
+          "type": "boolean",
           "default": true,
           "description": "Keep focus on the current file when opening memo files"
         },
         "autoMemoIndicator.memoFileExtensions": {
           "type": "array",
-          "default": [".md", ".txt", ".note", ".memo"],
+          "default": [
+            ".md",
+            ".txt",
+            ".note",
+            ".memo"
+          ],
           "description": "List of file extensions to consider as memo files",
           "items": {
             "type": "string"
