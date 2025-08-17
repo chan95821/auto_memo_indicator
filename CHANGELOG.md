@@ -2,6 +2,18 @@
 
 All notable changes to the "auto-memo-indicator" extension will be documented in this file.
 
+## [0.2.1] - 2024-12-28
+
+### Fixed
+- **Memo File Auto-Close Prevention**: Fixed issue where clicking on a memo file in the sidebar would trigger auto-close of the memo file itself
+- Added intelligent detection to prevent auto-close when switching to memo files
+- Only non-memo files now trigger the auto-close/open behavior
+
+### Technical Changes
+- Added `isMemoFile()` function to `config.ts` for memo file detection
+- Added `refreshForMemoFile()` method to `MemoIndicatorProvider` for memo-only refresh
+- Modified active editor change listener to differentiate between memo and non-memo files
+
 ## [0.2.0] - 2025-07-05
 
 ### Added

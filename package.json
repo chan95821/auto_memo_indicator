@@ -1,8 +1,7 @@
 {
   "name": "auto-memo-indicator",
   "displayName": "Auto Memo Indicator",
-  "description": "Shows markdown files with the same name as the current file in a sidebar",
-  "version": "0.2.0",
+  "description": "Shows markdown files with the same name as the current file in a sidebar",    "version": "0.2.1",
   "publisher": "your-publisher-name",
   "repository": {
     "type": "git",

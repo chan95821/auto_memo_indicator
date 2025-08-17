@@ -64,4 +64,12 @@ export class MemoIndicatorProvider implements vscode.TreeDataProvider<MemoFile> 
     getMemoFilesCount(): number {
         return this.memoFiles.length;
     }
+
+    async refreshForMemoFile(): Promise<void> {
+        console.log('=== REFRESH FOR MEMO FILE CALLED (No auto-close/open) ===');
+        this.memoFiles = await findMemoFiles();
+        this.updateContext();
+        this._onDidChangeTreeData.fire();
+        console.log('Total memo files found:', this.memoFiles.length);
+    }
 }

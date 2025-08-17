@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 
 const CONFIG_SECTION = 'autoMemoIndicator';
 
@@ -36,6 +37,12 @@ export function isAutoCloseEnabled(): boolean {
 
 export function shouldKeepSideLayout(): boolean {
     return getConfig().get<boolean>('keepSideLayout', false);
+}
+
+export function isMemoFile(uri: vscode.Uri): boolean {
+    const memoExtensions = getMemoFileExtensions();
+    const fileName = uri.fsPath.toLowerCase();
+    return memoExtensions.some(ext => fileName.endsWith(ext.toLowerCase()));
 }
 
 export async function toggleAutoOpen(): Promise<void> {

@@ -39,9 +39,18 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     // Register Event Listeners
-    const onDidChangeActiveEditor = vscode.window.onDidChangeActiveTextEditor((editor) => {
+    const onDidChangeActiveEditor = vscode.window.onDidChangeActiveTextEditor(async (editor) => {
         console.log('Active editor changed:', editor ? editor.document.fileName : 'none');
-        provider.refresh();
+        
+        // If active editor is a memo file, only refresh the tree view without auto-closing
+        if (editor && config.isMemoFile(editor.document.uri)) {
+            console.log('Active file is a memo file, skipping auto-close/open');
+            await provider.refreshForMemoFile();
+        } else {
+            // For non-memo files, perform full refresh (including auto-close/open logic)
+            await provider.refresh();
+        }
+        
         setTimeout(() => {
             if (provider.getMemoFilesCount() === 0) {
                 treeView.message = editor ? 
